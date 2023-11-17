@@ -144,10 +144,31 @@
 
 
         // upravljanje igracem
-        if (keys["ArrowLeft"]) rectX -= rectSpeed;
-        if (keys["ArrowRight"]) rectX += rectSpeed;
-        if (keys["ArrowUp"]) rectY -= rectSpeed;
-        if (keys["ArrowDown"]) rectY += rectSpeed;
+        //i provjera kako igrac ne bi izasao izvan okvira
+        if (keys["ArrowLeft"]){
+            rectX -= rectSpeed;
+            if(rectX < 0){
+                rectX = 0;
+            }
+        }
+        if (keys["ArrowRight"]){
+            rectX += rectSpeed;
+            if(rectX > canvas.width - rectWidth){
+                rectX = canvas.width - rectWidth;
+            }
+        }
+        if (keys["ArrowUp"]){
+            rectY -= rectSpeed;
+            if(rectY < 0){
+                rectY = 0;
+            }
+        }
+        if (keys["ArrowDown"]){
+            rectY += rectSpeed;
+            if(rectY > canvas.height - rectHeight){
+                rectY = canvas.height - rectHeight;
+            }
+        }
 
         // Micanje meteora
         for (var i = 0; i < meteors.length; i++) {
